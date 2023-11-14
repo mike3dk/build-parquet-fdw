@@ -1,0 +1,14 @@
+services:
+  build-parquet-fdw:
+    build: .
+    restart: on-failure
+    volumes:
+      - Output:/output
+    command: ["sleep", "infinity"]
+volumes:
+  Output:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: './output'
